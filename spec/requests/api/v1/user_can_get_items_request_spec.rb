@@ -42,6 +42,24 @@ describe "Items API" do
     expect(response).to be_success
     expect(response.status).to eq(204)
   end
-  # When I send a DELETE request to `/api/v1/items/1`
-  # I receive a 204 JSON response if the record is successfully deleted
+
+  scenario "a user requests to create an item for storedom" do
+    create_list(:item, 3)
+    item_params = {name: "testing", description: "assessment", image_url: "test image"}
+
+    post '/api/v1/items', params: {item: item_params}
+    item = Item.last
+
+    expect(response).to be_success
+    expect(response.status).to eq(200)
+
+    expect(item["id"]).to eq(4)
+    expect(item["name"]).to eq("testing")
+    expect(item["description"]).to eq("assessment")
+    expect(item["image_url"]).to eq("test image")
+  end
+  # When I send a POST request to `/api/v1/items` with a name, description, and image_url
+  # I receive a 201 JSON  response if the record is successfully created
+  # And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+
 end
