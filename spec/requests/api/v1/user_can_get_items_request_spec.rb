@@ -7,6 +7,7 @@ describe "Items API" do
     get '/api/v1/items'
 
     expect(response).to be_success
+    expect(response.status).to eq(200)
 
     items = JSON.parse(response.body)
 
@@ -23,6 +24,7 @@ describe "Items API" do
     get '/api/v1/items/1'
 
     expect(response).to be_success
+    expect(response.status).to eq(200)
 
     item = JSON.parse(response.body)
 
@@ -38,14 +40,7 @@ describe "Items API" do
     delete '/api/v1/items/1'
 
     expect(response).to be_success
-
-    items = JSON.parse(response.body)
-
-    expect(items.count).to eq(2)
-    expect(item["id"]).to eq(2)
-    expect(item["name"]).to eq("test item")
-    expect(item["description"]).to eq("this is an item")
-    expect(item["image_url"]).to eq("ImageString")
+    expect(response.status).to eq(204)
   end
   # When I send a DELETE request to `/api/v1/items/1`
   # I receive a 204 JSON response if the record is successfully deleted
