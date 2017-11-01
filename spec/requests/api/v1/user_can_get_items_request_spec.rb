@@ -31,7 +31,22 @@ describe "Items API" do
     expect(item["description"]).to eq("this is an item")
     expect(item["image_url"]).to eq("ImageString")
   end
-end
 
-# When I send a GET request to `/api/v1/items/1`
-# I receive a 200 JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+  scenario "a user requests to delete an item from storedom" do
+    create_list(:item, 3)
+
+    delete '/api/v1/items/1'
+
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
+
+    expect(items.count).to eq(2)
+    expect(item["id"]).to eq(2)
+    expect(item["name"]).to eq("test item")
+    expect(item["description"]).to eq("this is an item")
+    expect(item["image_url"]).to eq("ImageString")
+  end
+  # When I send a DELETE request to `/api/v1/items/1`
+  # I receive a 204 JSON response if the record is successfully deleted
+end
