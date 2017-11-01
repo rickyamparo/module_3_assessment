@@ -15,4 +15,9 @@ describe Store do
     expect(store.phone_number).to eq("1234567890")
     expect(store.store_type).to eq("test type")
   end
+
+  it "can find_by_zip" do
+    @stores = Store.find_by_zip(80202)
+    expect(@stores.count).to eq(17)
+  end
 end
