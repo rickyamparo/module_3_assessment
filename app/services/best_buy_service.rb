@@ -1,5 +1,7 @@
 class BestBuyService
 
+  attr_reader :total_stores
+
   def initialize
     @conn = Faraday.new(:url => "https://api.bestbuy.com/v1/stores?format=json&apiKey=#{ENV["X-API-KEY"]}") do |faraday|
       faraday.adapter Faraday.default_adapter
@@ -7,7 +9,7 @@ class BestBuyService
   end
 
   def stores_by_zip(zipcode)
-    response = @conn.get("https://api.bestbuy.com/v1/stores(area(#{zipcode},25))?format=json&show=storeId,storeType,name,phone,distance&apiKey=ru99w3xp6qu5848qvbgrznxq")
+    response = @conn.get("https://api.bestbuy.com/v1/stores(area(#{zipcode},25))?format=json&show=storeId,storeType,name,phone,distance&apiKey=#{ENV["X-API-KEY"]}")
     parsed_response = JSON.parse(response.body, symbolize_names: true)
   end
 
