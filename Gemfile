@@ -15,6 +15,7 @@ gem "minitest-rails"
 gem 'faraday'
 gem 'vcr'
 gem 'figaro'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development do
   gem "spring"
