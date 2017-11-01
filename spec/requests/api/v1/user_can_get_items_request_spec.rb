@@ -11,10 +11,10 @@ describe "Items API" do
     items = JSON.parse(response.body)
 
     expect(items.count).to eq(3)
-    expect(items.first.id).to eq(1)
-    expect(items.first.name).to eq("test item")
-    expect(items.first.description).to eq("this is an item")
-    expect(items.first.image_url).to eq("ImageString")
+    expect(items.first["id"]).to eq(1)
+    expect(items.first["name"]).to eq("test item")
+    expect(items.first["description"]).to eq("this is an item")
+    expect(items.first["image_url"]).to eq("ImageString")
   end
 end
 
