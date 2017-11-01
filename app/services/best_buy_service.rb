@@ -1,7 +1,7 @@
 class BestBuyService
 
   def initialize
-    @conn = Faraday.new(:url => "https://api.bestbuy.com/v1/stores?format=json&apiKey=ru99w3xp6qu5848qvbgrznxq") do |faraday|
+    @conn = Faraday.new(:url => "https://api.bestbuy.com/v1/stores?format=json&apiKey=#{ENV["X-API-KEY"]}") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
