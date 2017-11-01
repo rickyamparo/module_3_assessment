@@ -26,10 +26,12 @@ describe "Items API" do
 
     item = JSON.parse(response.body)
 
-    expect(item).to eq(3)
     expect(item["id"]).to eq(1)
     expect(item["name"]).to eq("test item")
     expect(item["description"]).to eq("this is an item")
     expect(item["image_url"]).to eq("ImageString")
   end
 end
+
+# When I send a GET request to `/api/v1/items/1`
+# I receive a 200 JSON response containing the id, name, description, and image_url but not the created_at or updated_at
