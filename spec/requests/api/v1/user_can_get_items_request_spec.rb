@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature "get items request" do
+describe "Items API" do
   scenario "a user requests a list of all items in storedom" do
-    create_list(:items, 3)
+    create_list(:item, 3)
 
     get '/api/v1/items'
 
