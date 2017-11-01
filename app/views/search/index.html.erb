@@ -16,7 +16,9 @@
 
     <li class="store-type">
     Type of Store: <%= store.store_type %>
-    </li>
+  </li>
     <br>
   </ol>
 <% end %>
+
+<%= will_paginate @stores %>

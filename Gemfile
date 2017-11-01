@@ -16,6 +16,7 @@ gem 'faraday'
 gem 'vcr'
 gem 'figaro'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'will_paginate'
 
 group :development do
   gem "spring"
