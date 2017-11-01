@@ -1,4 +1,10 @@
 <div class="container">
+
+  <%= form_tag :search, method: :get do %>
+    <%= text_field_tag :zipcode, "Search by zipcode" %>
+    <%= submit_tag 'Search'%>
+  <% end %>
+
   <div class="row">
     <div class="col-sm-12">
       <h1><%= @items.count %> Items</h1>
@@ -15,4 +21,3 @@
     </div>
   <% end %>
 </div>
-

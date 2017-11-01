@@ -6,10 +6,12 @@ describe "Best Buy Location Search" do
 
     visit '/'
 
-    fill_in "search[zipcode]", with: "80202"
+    fill_in "zipcode", with: "80202"
     click_on "Search"
 
     expect(current_path).to eq('/search')
+    expect(current_url).to have_content('q=80202')
+
     expect(page).to have_content("Stores within 25 miles of 80202")
     expect(page).to have_content("17 total stores")
     expect(page).to have_css('.store', count: 10)
