@@ -1,0 +1,22 @@
+<h1>Stores Near You</h1>
+
+<% @stores.each do |store| %>
+  <ol class="store">
+    <li class="name">
+    Station Name: <%= store.name %>
+    </li>
+
+    <li class="distance">
+    Distance from you: <%= store.distance %>
+    </li>
+
+    <li class="phone-number">
+    Store Phone Number: <%= store.phone_number %>
+    </li>
+
+    <li class="store_type">
+    Type of Store: <%= store.store_type %>
+    </li>
+    <br>
+  </ol>
+<% end %>
