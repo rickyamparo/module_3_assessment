@@ -1,4 +1,4 @@
-require 'will_paginate/array' 
+require 'will_paginate/array'
 
 class SearchController < ApplicationController
 

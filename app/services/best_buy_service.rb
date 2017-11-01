@@ -9,7 +9,7 @@ class BestBuyService
   end
 
   def stores_by_zip(zipcode)
-    response = @conn.get("https://api.bestbuy.com/v1/stores(area(#{zipcode},25))?format=json&show=storeId,storeType,name,phone,distance&apiKey=#{ENV["X-API-KEY"]}")
+    response = @conn.get("https://api.bestbuy.com/v1/stores(area(#{zipcode},25))?format=json&show=storeId,storeType,name,phone,distance&pageSize=100&apiKey=#{ENV["X-API-KEY"]}")
     parsed_response = JSON.parse(response.body, symbolize_names: true)
   end
 
