@@ -16,8 +16,20 @@ describe "Items API" do
     expect(items.first["description"]).to eq("this is an item")
     expect(items.first["image_url"]).to eq("ImageString")
   end
-end
 
-# When I send a GET request to `/api/v1/items`
-# I receive a 200 JSON response containing all items
-# And each item has an id, name, description, and image_url but not the created_at or updated_at
+  scenario "a user requests one item from storedom" do
+    create_list(:item, 3)
+
+    get '/api/v1/items/1'
+
+    expect(response).to be_success
+
+    item = JSON.parse(response.body)
+
+    expect(item).to eq(3)
+    expect(item["id"]).to eq(1)
+    expect(item["name"]).to eq("test item")
+    expect(item["description"]).to eq("this is an item")
+    expect(item["image_url"]).to eq("ImageString")
+  end
+end
